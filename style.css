@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #fd951f;
+    --primary-color: #7A2FF8;
     --bg-color: #130f0d;
     --text-color: #f0f0f5;
     --light-color: rgba(255, 255, 255, 0.04)
@@ -62,7 +62,7 @@ input, button {
 
     color: var(--text-color);
     font-size: 1em;
-    font-weight: 600;
+    font-weight: 00;
 }
 
 button {
@@ -83,7 +83,7 @@ input ~ label {
 input:focus ~ label,
 input:valid ~ label {
     transform: translateY(-25px);
-    font-size: 0.8rem;
+    font-size: 0.8em;
     letter-spacing: 0.1em;
 }
 

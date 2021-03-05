@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form validation with HTML API</title>
+    <title>Form validation</title>
 
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
@@ -15,11 +15,17 @@
 
 <body>
     <form>
-        <h2>Entrar na lista</h2>
+        <h2>Preencha o formulário</h2>
 
         <div class="input">
             <input type="text" required>
             <label>Nome</label>
+            <span class="error"></span>
+        </div>
+
+        <div class="input">
+            <input type="text" required>
+            <label>Sobrenome</label>
             <span class="error"></span>
         </div>
 
@@ -29,7 +35,13 @@
             <span class="error"></span>
         </div>
 
-        <button type="submit">Enviar</button>
+        <div class="input">
+            <input type="password" required>
+            <label>Senha</label>
+            <span class="error"></span>
+        </div>
+
+        <button type="submit">Entrar</button>
 
     </form>
 </body>
