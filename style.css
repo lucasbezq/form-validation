@@ -1,5 +1,6 @@
 :root {
     --primary-color: #7A2FF8;
+    --secondary-color: #9050ff;
     --bg-color: #130f0d;
     --text-color: #f0f0f5;
     --light-color: rgba(255, 255, 255, 0.04)
@@ -51,7 +52,6 @@ input, button {
     appearance: none;
 
     width: 100%;
-
     padding: 16px 0;
 
     border: none;
@@ -68,6 +68,11 @@ input, button {
 button {
     margin-top: 16px;
     background-color: var(--primary-color);
+    transition: .4s;
+}
+
+button:hover {
+    background: var(--secondary-color);
 }
 
 input ~ label {
@@ -99,3 +104,4 @@ input:valid ~ label {
     border: 1px solid red;
     padding: 0.4em;
 }
+
