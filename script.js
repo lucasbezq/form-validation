@@ -1,13 +1,12 @@
 const fields = document.querySelectorAll("[required]")
 
-function customValidation(field) {
-
+function ValidateField(field) {
     function verifyErrors() {
         let foundError = false;
 
         for (let error in field.validity) {
             if (field.validity[error] && !field.validity.valid) {
-                foundError = true;
+                foundError = error
             }
         }
         return foundError;
@@ -20,58 +19,65 @@ function customValidation(field) {
             },
             email: {
                 valueMissing: "Email é obrigatório",
-                typeMisMatch: "Por favor, preencha um email válido"
+                typeMismatch: "Por favor, preencha um email válido"
             }
         }
+
         return messages[field.type][typeError]
     }
 
     function setCustomMessage(message) {
-        const spanError = field.parentNode.querySelectorAll("span.error");
+        const spanError = field.parentNode.querySelector("span.error")
 
         if (message) {
-            spanError.classList.add("active");
+            spanError.classList.add("active")
             spanError.innerHTML = message
-        }
-        else {
-            spanError.classList.remove("active");
-            spanError.innerHTML = "";
+        } else {
+            spanError.classList.remove("active")
+            spanError.innerHTML = ""
         }
     }
 
     return function () {
-        const eror = verifyErrors();
+
+        const error = verifyErrors()
 
         if (error) {
-            const message = customMessage(error);
+            const message = customMessage(error)
 
-            field.style.borderColor = "red";
-            setCustomMessage(message);
-        }
-        else {
-            field.style.borderColor = "green";
-            setCustomMessage();
+            field.style.borderColor = "red"
+            setCustomMessage(message)
+        } else {
+            field.style.borderColor = "green"
+            setCustomMessage()
         }
     }
 }
 
-function customValidation(event) {
-    const field = evend.target;
-    const validation = validateField(field);
 
-    validation();
+function customValidation(event) {
+
+    const field = event.target
+    const validation = ValidateField(field)
+
+    validation()
+
 }
 
 for (field of fields) {
     field.addEventListener("invalid", event => {
-        event.preventDefault();
-        customValidation(event);
-    });
-    field.addEventListener("blur", customValidation);
+        // eliminar o bubble
+        event.preventDefault()
+
+        customValidation(event)
+    })
+    field.addEventListener("blur", customValidation)
 }
 
-document, querySelector("form").addEventListener("submit", event => {
-    console.log("enviar formulário");
 
-    event.preventDefault();
-});
+document.querySelector("form")
+    .addEventListener("submit", event => {
+        console.log("enviar o formulário")
+
+        event.preventDefault()
+    })
